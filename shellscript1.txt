@@ -1,0 +1,15 @@
+#!/bin/bash
+
+FILE="/var/log/messages-20221210"
+result=$(stat -c "%a" /var/log/messages-20221210)
+if [ -f "$FILE" ];
+then
+ if [ $result = 600 ];
+ then 
+ echo "$FILE exists, permissions are $result "  >> /var/log/rtdmlog
+ else
+ echo "$FILE exists, permissions are not correct at $(date). Current permissions are $result "  >> /var/log/rtdmlog
+ fi
+else
+ echo "$FILE doesnt exist at $(date)" >> /var/log/rtdmlog
+fi

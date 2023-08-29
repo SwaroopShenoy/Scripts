@@ -14,5 +14,5 @@ else
  echo "$FILE doesnt exist at $(date)" >> /var/log/rtdmlog
  for user in $(ls /home); do
     if grep -q "rm $FILE\|rm -f $FILE\|rm -vf $FILE" "/home/$user/.bash_history"; then
-        echo "User $user deleted the file"
+        echo "$FILE doesnt exist. User $user deleted the file at $(date)" >> /var/log/rtdmlog
 fi
